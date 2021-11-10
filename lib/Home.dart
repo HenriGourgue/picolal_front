@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:picolal_front/FavoritesView.dart';
 import 'package:picolal_front/CategoriesView.dart';
+import 'package:picolal_front/AboutView.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -90,6 +91,14 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (BuildContext context) => FavoritesView()
+      )
+    );
+  }
+
+  void _goToAboutView(BuildContext context){
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context) => AboutView()
       )
     );
   }
@@ -217,6 +226,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         this._goToFavoritesView(context);
                       },
                     ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: FloatingActionButton(
+                      heroTag: "button2",
+                      tooltip: 'A propos',
+                      child: Icon(Icons.help),
+                      onPressed: () async {
+                        this._goToAboutView(context);
+                      },
+                    )
                   ),
                   Align(
                     alignment: Alignment.bottomRight,
