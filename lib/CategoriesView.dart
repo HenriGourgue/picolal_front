@@ -1,5 +1,7 @@
 // ignore_for_file: missing_return
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:picolal_front/ApiServices.dart';
 import 'package:picolal_front/Category.dart';
@@ -15,9 +17,11 @@ class CategoriesView extends StatefulWidget {
 }
 
 class _CategoriesViewState extends State<CategoriesView> {
+  
 
   @override
   Widget build(BuildContext context) {
+    stderr.write('test');
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -56,12 +60,14 @@ class _CategoriesViewState extends State<CategoriesView> {
                               if(snapshot.hasData){
                                 List<Category> categories = snapshot.data;
                                 if(categories.isEmpty) {
+                                  stderr.write('test');
                                   return Center(
                                     child: Text(
                                         "Il n'y a pas de catégories."
                                     ),
                                   );
                                 } else {
+                                  stderr.write('test');
                                   return Container(
                                     height: MediaQuery.of(context).size.height * 0.6,
                                     child: ListView.builder(
@@ -73,6 +79,7 @@ class _CategoriesViewState extends State<CategoriesView> {
                                   );
                                 }
                               } else {
+                                stderr.write('test');
                                 return Container(
                                   child: Text(
                                     "Aucune donnée"
@@ -82,9 +89,11 @@ class _CategoriesViewState extends State<CategoriesView> {
                               break;
                             case ConnectionState.none:
                               // TODO: Handle this case.
+                              stderr.write('test');
                               break;
                             case ConnectionState.active:
                               // TODO: Handle this case.
+                              stderr.write('test');
                               break;
                           }
                         },
