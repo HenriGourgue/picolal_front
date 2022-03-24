@@ -28,6 +28,8 @@ class ApiServices {
 
       final res = await http.get(endpoint + "category/" + cat.name + "/rules");
 
+      print(res.statusCode);
+
       if (res.statusCode != 200) throw Error();
 
       final jsonBody = json.decode(res.body);

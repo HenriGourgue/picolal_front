@@ -150,7 +150,166 @@ class _DrunkViewState extends State<DrunkView> {
             width: MediaQuery.of(context).size.width,
             child: Row(
               children: <Widget>[
-                Text('TEST')
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: MediaQuery.of(context).size.height,
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                padding: EdgeInsets.only(top: 10),
+                                width: 70,
+                                height: 70,
+                                child: GestureDetector(
+                                  onTap: () => {
+                                    this._goToHomeView(context)
+                                  },
+                                  child: Container(
+                                    child: Image.asset('assets/quit_button.png')
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          Expanded(
+                            child: Center(
+                              child: Text(
+                                "${widget.rules[this.currentIndex].name}",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 40,
+                                ), textAlign: TextAlign.center,
+                              ),
+                            )
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Container(
+                                width: 70,
+                                height: 70,
+                                child: GestureDetector(
+                                  onTap: () => {
+                                    this.refreshRule()
+                                  },
+                                  child: Container(
+                                    child: Image.asset("assets/next_arrow.png"),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            height: MediaQuery.of(context).size.height * 0.2,
+                            alignment: Alignment.center,
+                            child: Text(
+                              '${this.currentPlayer}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 35
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Flexible(
+                            child: Text(
+                              '${widget.rules[this.currentIndex].content}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                              ), textAlign: TextAlign.center,
+                            ),
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            height: MediaQuery.of(context).size.height * 0.45,
+                            alignment: Alignment.bottomLeft, padding: EdgeInsets.only(left: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                GestureDetector(
+                                  onTap: () => {
+                                    this.insertDb(widget.rules[this.currentIndex])
+                                  },
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: <Widget>[
+                                      Container(
+                                        width: 70,
+                                        height: 70,
+                                        alignment: Alignment.bottomLeft,
+                                        child: Icon(Icons.star_border, size: 70, color: Colors.yellow,),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    Row(
+                                      children: <Widget>[
+                                        Container(
+                                          width: 70,
+                                          height: 70,
+                                          alignment: Alignment.bottomRight,
+                                          child: Column(
+                                            children: <Widget>[
+                                              Container(
+                                                child: Image.asset("assets/drink_bg.png"),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          padding: EdgeInsets.only(right: 10),
+                                          child: Column(
+                                            children: <Widget>[
+                                              Text(
+                                                '${widget.rules[this.currentIndex].drinks.toString()}',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 35
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      ]
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                )
               ]
             )
           ),
