@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:picolal_front/Rule.dart';
 import 'package:picolal_front/RuleCard.dart';
+import 'package:picolal_front/Database_helper.dart';
 
 class FavoritesView extends StatefulWidget{
   @override
@@ -12,7 +13,14 @@ class _FavoritesViewState extends State<FavoritesView> {
   List<Rule> rules = [];
 
   static Future<List<Rule>> _query() async {
-    return [];
+    List<Rule> rules = List<Rule>();
+    final DatabaseHelper db = DatabaseHelper.instance;
+    final allRows = await db.queryAllRows();
+    allRows.forEach((row) {
+      Rule rule = new Rule(0, row["name"], row["content"], row["drinks"]);
+      rules.add(rule);
+    });
+    return rules;
   }
 
   void callback(){
@@ -57,7 +65,7 @@ class _FavoritesViewState extends State<FavoritesView> {
                             }
                             return Container(
                               height: MediaQuery.of(context).size.height * 0.6,
-                              child: Text("Pas de règle ajoutée aux favoris", textAlign: TextAlign.center),
+                              child: Text("Pas de règles ajoutées aux favoris", textAlign: TextAlign.center),
                             );
                           } else {
                             return Text("NO DATA");
